@@ -1,0 +1,19 @@
+{
+  "name" : "Popup runs in same thread as service worker?",
+  "version" : "1.0.0",
+  "description" : "Slow callback for storage.onChanged.addListener in action popup causes subsequent storage.local.get in service worker to hang, but using a slow callback in content script works just fine. Isn't popup now supposed to be isolated from service worker in ManifestV3? (https://groups.google.com/a/chromium.org/g/chromium-extensions/c/umZocTE74ng)",
+  "permissions": ["storage"],
+  "action": {
+     "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "manifest_version": 3
+}
